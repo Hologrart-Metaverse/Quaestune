@@ -1,4 +1,4 @@
-export default (register = "", action) => {
+export const register = (register = "", action) => {
     switch (action.type){
         case "SHOW_LOGIN":
             return "show login";
@@ -12,6 +12,22 @@ export default (register = "", action) => {
 
         default: 
             return register;
+            break;
+    }
+}
+
+
+export const size = (size = 2, action) => {
+    switch (action.type) {
+        case "UP":
+            return size + 1;
+            break;
+        case "DOWN":
+            return size - 1;
+            break;
+        
+        default:
+            return size;
             break;
     }
 }
