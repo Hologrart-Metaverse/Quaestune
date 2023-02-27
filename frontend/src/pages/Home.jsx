@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar';
 import Register from '../components/Register';
 
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { getCanvases } from "../actions/Canvases";
 
@@ -18,11 +19,14 @@ const Home = () => {
   const canvases = useSelector((state) => state.canvases);
 
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     document.title = "Home | Hologrart Metaverse";
     dispatch(getCanvases());
-  }, [])
+  }, []);
+
+  useEffect(() => {dispatch({ type: "EXIT" });}, [location.search]);
   
   useEffect(() => {console.log(canvases)}, [canvases])
 

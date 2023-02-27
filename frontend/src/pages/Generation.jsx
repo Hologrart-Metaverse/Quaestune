@@ -13,8 +13,9 @@ import { fetchCanvasPixels } from "../actions/Canvas";
 
 const Back = () => {
     const navigation = useNavigate();
+    const dispatch = useDispatch();
     return (
-        <div onClick={() => navigation("/")} className='flex justify-center items-center w-12 h-12 rounded-full bg-white fixed top-10 left-10 cursor-pointer shadow-xl shadow-black hover:shadow-4xl z-50'>
+        <div onClick={() => {navigation("/"); dispatch({ type: "EXIT" });}} className='flex justify-center items-center w-12 h-12 rounded-full bg-white fixed top-10 left-10 cursor-pointer shadow-xl shadow-black hover:shadow-4xl z-50'>
             <ArrowBackIcon style={{ color: "black" }} />
         </div>
     )
