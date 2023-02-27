@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 
 import DrawPanel from './DrawPanel';
 
-const Editor = () => {
+const Editor = ({ canvas_id }) => {
     const [width, setWidth] = useState(window.innerWidth);
-    useEffect(() => {setWidth(window.innerWidth)}, [window.innerWidth])
+    useEffect(() => {setWidth(window.innerWidth)}, [window.innerWidth]);
+
+    const canvasPixels = useSelector((state) => state.canvas_pixels);
 
     const [selectedColor, setSelectedColor] = useState("purple");
   return (
@@ -17,7 +19,10 @@ const Editor = () => {
             <HuePicker className='fixed inset-x-0 top-3/4 mx-auto' color={selectedColor} onChange={(color) => setSelectedColor(color.hex) } />
         }
 
-        {/* <DrawPanel  /> */}
+        <div className='mt-10'>
+
+        <DrawPanel pixels={canvasPixels} canvas_id={canvas_id} selectedColor={selectedColor} />
+        </div>
     </div>
   )
 }

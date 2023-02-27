@@ -22,7 +22,7 @@ const changePixelUrl = `/canvas/changeCanvas`;
 const refreshCanvasUrl = `/canvas/refresh`;
 
 
-export const createUser = (newUser) => server.post(createUserUrl, newUser);
+export const userCreate = (newUser) => server.post(createUserUrl, newUser);
 export const loginUser = (user) => server.post(loginUserUrl, user);
 export const loginLocally = (user) => server.post(loginLocallyUrl, user);
 

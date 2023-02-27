@@ -3,9 +3,9 @@ import React from 'react';
 
 const DiscordButton = () => {
   return (
-    <div className='text-white font-bold text-lg px-12 py-8 mt-4 rounded-md bg-purple-600 hover:shadow-lg hover:shadow-white/40 transition cursor-pointer text-center'>
+    <a target="_blank" href="https://discord.gg/nDRs2GUK" className='text-white font-bold text-lg px-12 py-8 mt-4 rounded-md bg-purple-600 hover:shadow-lg hover:shadow-white/40 transition cursor-pointer text-center'>
       Join Discord Server!
-    </div>
+    </a>
   )
 }
 
@@ -26,7 +26,7 @@ const Footer = () => {
             <img src="" alt="" />
             <h2 className='text-xl font-bold text-white'>Hologrart Metaverse</h2>
           </div>
-          <p className='text-white text-sm max-w-lg'>Aute elit consequat excepteur duis incididunt sint magna deserunt dolor. Eu id id id consequat in cillum ullamco adipisicing aute adipisicing aliquip ad. Sunt Lorem dolore voluptate et proident. Aliqua cillum veniam minim minim est veniam dolore exercitation.</p>
+          <p className='text-white text-sm max-w-lg'>Holgrart is developed with Web3 infrastructure and blockchain for the metaverse; It focuses on business process solutions using blockchain-based finance in culture, arts, entertainment NFT-focused and some strategic sectors.</p>
           <Copyright />
         </div>
         <div className='basis1/2 flex flex-col'>

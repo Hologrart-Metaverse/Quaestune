@@ -1,4 +1,4 @@
-import { fetchCanvases } from "../api";
+import * as api from "../api";
 
 export const getCanvases = () => async (dispatch) => {
     try {

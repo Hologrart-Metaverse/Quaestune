@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Button, ButtonGroup } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
-// import Editor from '../components/Canvas/Draw/components/Editor';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import Editor from '../components/Canvas/Editor';
+import { fetchCanvasPixels } from "../actions/Canvas";
 
 const Back = () => {
     const navigation = useNavigate();
@@ -30,7 +31,7 @@ const Buttons = () => {
                 aria-label="vertical contained button group"
                 variant="contained"
             >
-                <Button onClick={() => { size <= 15 ? dispatch({ type: "UP" }) : null }} key="increase"><AddIcon /></Button>
+                <Button onClick={() => { size <= 20 ? dispatch({ type: "UP" }) : null }} key="increase"><AddIcon /></Button>
                 <Button onClick={() => { size > 0 ? dispatch({ type: "DOWN" }) : null }} key="decrease"><RemoveIcon /></Button>
             </ButtonGroup>
         </div>
@@ -38,10 +39,19 @@ const Buttons = () => {
 }
 
 const Generation = () => {
-    const canvasPixels = useSelector((state) => state.canvas_pixels);
+    const location = useLocation();
+    const dispatch = useDispatch();
+
+    const canvas_id = location.pathname.split("/")[2];
+
+    document.title =
+      `${location.pathname.split("/")[2]?.replaceAll("%20", " ")} | Joint NFT Generation`;
+
+    dispatch(fetchCanvasPixels(canvas_id));
+
   return (
     <div>
-        <Editor />
+        <Editor canvas_id={canvas_id} />
         <Back />
         <Buttons />
         {/* <div> */}

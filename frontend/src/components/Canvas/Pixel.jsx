@@ -1,15 +1,18 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Pixel = ({ columnNumber, color, whose, canvas_id, rowNumber, selectedColor, setBuyAlert }) => {
+import { updateCanvas } from '../../actions/Canvas';
+
+const Pixel = ({ columnNumber, color, whose, canvas_id, rowNumber, selectedColor }) => {
   var [pixelColor, setPixelColor] = useState(color);
   const [oldColor, setOldColor] = useState(pixelColor);
   const [canChangeColor, setCanChangeColor] = useState(true);
 
   const dispatch = useDispatch();
+  const size = useSelector((state) => state.size);
+  const user = useSelector((state) => state.user);
 
   const applyColor = () => {
-    // setPixelColor(selectedColor);
     dispatch(updateCanvas(canvas_id, rowNumber, columnNumber, pixelColor, user._id));
     setCanChangeColor(false);
   };
@@ -17,7 +20,6 @@ const Pixel = ({ columnNumber, color, whose, canvas_id, rowNumber, selectedColor
   const changeColorOnHover = () => {
     setOldColor(pixelColor);
     setPixelColor(selectedColor);
-    setBuyAlert(true);
   };
 
   const resetColor = () => {
@@ -25,16 +27,15 @@ const Pixel = ({ columnNumber, color, whose, canvas_id, rowNumber, selectedColor
       setPixelColor(oldColor);
     }
     setCanChangeColor(true);
-    setBuyAlert(false);
   };
 
 
   return <div
-    className=""
+    className=''
     onClick={applyColor}
     onMouseEnter={changeColorOnHover}
     onMouseLeave={resetColor}
-    style={{ backgroundColor: pixelColor }}
+    style={{ backgroundColor: pixelColor, width: size, height: size }}
   />;
 }
 

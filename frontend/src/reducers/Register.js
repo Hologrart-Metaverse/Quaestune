@@ -17,7 +17,7 @@ export const register = (register = "", action) => {
 }
 
 
-export const size = (size = 2, action) => {
+export const size = (size = 6, action) => {
     switch (action.type) {
         case "UP":
             return size + 1;

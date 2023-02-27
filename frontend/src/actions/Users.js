@@ -1,9 +1,9 @@
-import { createUser, login, loginLocally } from "../api";
+import * as api from "../api";
 
 
 export const createUser = (user) => async (dispatch) => {
     try {
-        const { data } = await api.createUser(user);
+        const { data } = await api.userCreate(user);
         dispatch({ type: "CREATE", payload: data });
     } catch (error) {
         console.log(error);
